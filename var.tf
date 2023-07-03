@@ -43,6 +43,7 @@ variable "instances" {
     dispatch = {
       name = "dispatch"
       type = "t3.micro"
+      password = "roboshop123"
     }
     redis = {
       name = "redis"
