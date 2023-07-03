@@ -13,25 +13,24 @@ resource "aws_instance" "ec2" {
     name = var.component
   }
 }
+
 resource "null_resource" "provisioner" {
-     provisioner "remote-exec" {
+  provisioner "remote-exec" {
 
-       connection {
-         host = aws_instance.ec2.public_ip
-         user = "centos"
-         password = "DevOps321"
+    connection {
+      host = aws_instance.ec2.public_ip
+      user = "centos"
+      password = "DevOps321"
+    }
 
-       }
+    inlne = [
+    "git clone https://github.com/hyder18/roboshop-shell",
+      "cd roboshop-shell",
+      "sudo bash ${var.component}.sh ${var.password}"
 
-       inline = [
-         "git clone https://github.com/hyder18/roboshop-shell",
-         "cd roboshop-shell",
-         "sudo bash ${var.component}.sh ${var.password}"
-       ]
-     }
-   }
-
-
+    ]
+  }
+}
 
 resource "aws_security_group" "sg" {
   name        = "${var.component}-${var.env}-sg"
@@ -39,7 +38,7 @@ resource "aws_security_group" "sg" {
 
 
   ingress {
-    description      = "ALL"
+    description      = "all"
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
@@ -51,7 +50,6 @@ resource "aws_security_group" "sg" {
     to_port          = 0
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-
   }
 
   tags = {
@@ -69,8 +67,8 @@ resource "aws_route53_record" "record" {
 
 variable "component" {}
 variable "instance_type" {}
+
 variable "env" {
   default = "dev"
 }
-
 variable "password" {}
