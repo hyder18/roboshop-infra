@@ -3,17 +3,17 @@ variable "instances" {
     frontend = {
     name = "frontend"
     type = "t3.micro"
-      password = "null"
+      password = " "
   }
     mongdb = {
       name = "mongodb"
       type = "t3.micro"
-      password = "null"
+      password = " "
     }
     catalogue = {
       name = "catalogue"
       type = "t3.micro"
-      password = "null"
+      password = " "
     }
     mysql = {
       name = "mysql"
@@ -23,12 +23,12 @@ variable "instances" {
     cart = {
       name = "cart"
       type = "t3.micro"
-      password = "null"
+      password = " "
     }
     user = {
       name = "user"
       type = "t3.micro"
-      password = "null"
+      password = " "
     }
     shipping= {
       name = "shipping"
@@ -53,7 +53,7 @@ variable "instances" {
     redis = {
       name = "redis"
       type = "t3.micro"
-      password = "null"
+      password = " "
     }
   }
 }
