@@ -13,7 +13,7 @@ resource "aws_instance" "ec2" {
     name = var.component
   }
 }
-   resource "null_resource" "provisioner" {
+resource "null_resource" "provisioner" {
      provisioner "remote-exec" {
 
        connection {
