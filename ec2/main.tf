@@ -2,7 +2,7 @@ data "aws_caller_identity" "current" {}
 data "aws_ami" "ami" {
   most_recent = true
   name_regex  = "devops-ansible-practice"
-  owners      = [data.aws_caller_identity.current.account_id]
+  owners      = [973714476881]
 
 }
 
@@ -25,8 +25,9 @@ resource "null_resource" "provisioner" {
     }
 
     inline = [
-      "ansible-pull -i localhost, -u https://github.com/hyder18/roboshop-ansible roboshop.yml -e role_name=${var.component}"
-
+      "git clone https://github.com/hyder18/roboshop-shell",
+      "cd roboshop-shell",
+      "sudo bash ${var.component}".sh ${var.password}""
 
     ]
   }
@@ -67,7 +68,8 @@ resource "aws_route53_record" "record" {
 
 variable "component" {}
 variable "instance_type" {}
+variable "password" {}
 
 variable "env" {
-  default = "dev"
-}
+  default = "dev
+
