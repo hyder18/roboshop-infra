@@ -1,4 +1,4 @@
-data "aws_caller_identity" "current" {}
+
 data "aws_ami" "ami" {
   most_recent = true
   name_regex  = "devops-ansible-practice"
@@ -27,7 +27,7 @@ resource "null_resource" "provisioner" {
     inline = [
       "git clone https://github.com/hyder18/roboshop-shell",
       "cd roboshop-shell",
-      "sudo bash ${var.component}".sh ${var.password}""
+      "sudo bash ${var.component}.sh ${var.password}"
 
     ]
   }
@@ -71,5 +71,6 @@ variable "instance_type" {}
 variable "password" {}
 
 variable "env" {
-  default = "dev
+  default = "dev"
+}
 
