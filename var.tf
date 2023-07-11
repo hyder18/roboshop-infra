@@ -24,9 +24,8 @@ variable "instances" {
     user = {
       name = "user"
       type = "t3.micro"
-      password = " "
     }
-    shipping= {
+    shipping = {
       name = "shipping"
       type = "t3.micro"
       password = "RoboShop@1"
