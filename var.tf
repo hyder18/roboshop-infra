@@ -8,9 +8,9 @@ variable "instances" {
       name = "mongodb"
       type = "t3.micro"
     }
-    catalogue = {
-      name = "catalogue"
-      type = "t3.micro"
+   catalogue = {
+     name = "catalogue"
+     type = "t3.micro"
     }
     mysql = {
       name = "mysql"
